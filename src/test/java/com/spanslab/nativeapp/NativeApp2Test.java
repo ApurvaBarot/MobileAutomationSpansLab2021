@@ -32,30 +32,44 @@ public class NativeApp2Test {
 	  
 	    driver.findElementByXPath("//*[@text='Birthday']").click();
 	    
+	    String dayXpath="";
+	    String monthXpath="";
+	    
 	    if(driver.findElementByXPath("(//*[@resource-id='android:id/numberpicker_input'])[1]").getText().length()==2)
 	    {
-	    	driver.findElementByXPath("(//*[@resource-id='android:id/numberpicker_input'])[1]").click();
-		    driver.findElementByXPath("(//*[@resource-id='android:id/numberpicker_input'])[1]").clear();
-		    driver.findElementByXPath("(//*[@resource-id='android:id/numberpicker_input'])[1]").sendKeys("08");
+	    	dayXpath="(//*[@resource-id='android:id/numberpicker_input'])[1]";
+	    	monthXpath="(//*[@resource-id='android:id/numberpicker_input'])[2]";
 	    }
 	    else
 	    {
-	    	driver.findElementByXPath("(//*[@resource-id='android:id/numberpicker_input'])[1]").click();
-		    driver.findElementByXPath("(//*[@resource-id='android:id/numberpicker_input'])[1]").clear();
-		    driver.findElementByXPath("(//*[@resource-id='android:id/numberpicker_input'])[1]").sendKeys("Aug");
+	    	dayXpath="(//*[@resource-id='android:id/numberpicker_input'])[2]";
+	    	monthXpath="(//*[@resource-id='android:id/numberpicker_input'])[1]";
+	    }
+	    
+	    while(!driver.findElementByXPath(dayXpath).getText().equals("08"))
+	    {
+	    	System.out.println(driver.findElementByXPath(dayXpath).getText());
+	    	driver.findElementByXPath(dayXpath).click();
+		    driver.findElementByXPath(dayXpath).clear();
+		    driver.findElementByXPath(dayXpath).sendKeys("08");
+	    }
+	    
+	    while(!driver.findElementByXPath(monthXpath).getText().equals("Aug"))
+	    {
+	    	driver.findElementByXPath(monthXpath).click();
+		    driver.findElementByXPath(monthXpath).clear();
+		    driver.findElementByXPath(monthXpath).sendKeys("Aug");
 	    }
 	    
 	    
-	    
-	    driver.findElementByXPath("(//*[@resource-id='android:id/numberpicker_input'])[2]").click();
-	    driver.findElementByXPath("(//*[@resource-id='android:id/numberpicker_input'])[2]").clear();
-	    driver.findElementByXPath("(//*[@resource-id='android:id/numberpicker_input'])[2]").sendKeys("Aug");
 	    
 	    driver.findElementByXPath("(//*[@resource-id='android:id/numberpicker_input'])[3]").click();
 	    driver.findElementByXPath("(//*[@resource-id='android:id/numberpicker_input'])[3]").clear();
 	    driver.findElementByXPath("(//*[@resource-id='android:id/numberpicker_input'])[3]").sendKeys("1990");
 	    
 	    driver.findElementByXPath("//*[@text='OK']").click();
+	    
+	    
 	}
 }
 
