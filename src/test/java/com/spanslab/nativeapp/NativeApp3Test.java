@@ -28,12 +28,9 @@ public class NativeApp3Test {
 		
 		driver.findElementByXPath("//*[@text='Dismiss']").click();
 		
-		
-//		System.out.println(driver.findElementByXPath("//*[@text='Arts and humanities']").isDisplayed());
 		driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
 		while(driver.findElementsByXPath("//*[@text='Arts and humanities']").size()==0)
 		{
-		
 			driver.executeScript("mobile:shell",ImmutableMap.of("command", "input touchscreen swipe 1000 800 1000 400"));
 		}
 		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
@@ -41,8 +38,15 @@ public class NativeApp3Test {
 		driver.findElementByXPath("//*[@text='Arts and humanities']").click();
 	    
 
+		driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+		while(driver.findElementsByXPath("//*[@text='Art of Asia']").size()==0)
+		{
+			driver.executeScript("mobile:shell",ImmutableMap.of("command", "input touchscreen swipe 1000 800 1000 400"));
+		}
+		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 		
-		//adb shell input touchscreen swipe 1000 800 1000 400
+		driver.findElementByXPath("//*[@text='Art of Asia']").click();
+		
 		
 		
 	}
