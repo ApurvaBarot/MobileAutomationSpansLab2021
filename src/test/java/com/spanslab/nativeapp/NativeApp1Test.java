@@ -32,6 +32,8 @@ public class NativeApp1Test {
 		 driver.findElementByXPath("//*[@text='Sign in']").click();
 		 driver.findElementByXPath("//*[contains(@text,'username')]").sendKeys("Radhika");
 		 driver.findElementByXPath("//*[@text='Password']").sendKeys("Radhika");
+		 
+			//*[@text='Sign in' and @index='0']
 		 driver.findElementByXPath("(//*[@text='Sign in'])[2]").click();
 		 
 		 String actualValue=driver.findElementByXPath("//*[contains(@text,'Invalid')]").getText();
