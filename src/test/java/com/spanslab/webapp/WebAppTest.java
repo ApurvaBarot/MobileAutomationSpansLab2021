@@ -18,7 +18,7 @@ public class WebAppTest {
 	public static void main(String[] args) throws MalformedURLException, InterruptedException {
 		
 		DesiredCapabilities cap=new DesiredCapabilities();
-		cap.setCapability("deviceName", "redmi");
+		cap.setCapability("deviceName", "hhhhhh");
 		cap.setCapability("platformName", "Android");
 		cap.setCapability("browserName", "chrome");
 		cap.setCapability("chromedriverExecutable", "D:\\B-Mine\\Company\\Company\\SpansLab\\chromedriver.exe");
@@ -53,7 +53,6 @@ public class WebAppTest {
 		//click log out
 		Thread.sleep(5000);
 		driver.quit();
-
 	}
 }
 
