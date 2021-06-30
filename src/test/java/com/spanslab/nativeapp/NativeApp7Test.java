@@ -36,7 +36,6 @@ public class NativeApp7Test {
 		Thread.sleep(3000);
 		
 		
-		
 //		538,1332
 		
 		
@@ -107,10 +106,11 @@ public class NativeApp7Test {
 //	  .moveTo({x: 984: y: 1091})
 //	  .release()
 //	  .perform()
-//	  
+	  
+		
+		
 		
 	}
-
 }
 
 
