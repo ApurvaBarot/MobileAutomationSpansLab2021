@@ -10,7 +10,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 
-public class DeafultServerStartTest1 {
+public class DefaultServerStartTest1 {
 
 	public static void main(String[] args) throws MalformedURLException {
 		AppiumDriverLocalService service=null;
