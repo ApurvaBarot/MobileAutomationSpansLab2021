@@ -23,6 +23,8 @@ public class DefaultServerStartTest {
 		 service.stop();
 		 
 		 System.out.println(service.isRunning());
+		 
+		 //will start by 12 clk
 
 	}
 
