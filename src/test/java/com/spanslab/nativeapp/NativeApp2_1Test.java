@@ -9,7 +9,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import io.appium.java_client.android.AndroidDriver;
 
-public class NativeApp2Test {
+public class NativeApp2_1Test {
 
 	public static void main(String[] args) throws MalformedURLException {
 		DesiredCapabilities cap=new DesiredCapabilities();

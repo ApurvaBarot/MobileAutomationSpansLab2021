@@ -1,5 +1,6 @@
 package com.spanslab.webapp;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
@@ -16,12 +17,15 @@ import io.appium.java_client.android.AndroidDriver;
 public class WebAppTest {
 
 	public static void main(String[] args) throws MalformedURLException, InterruptedException {
+		File file=new File("src/test/resources/driver/chromedriver.exe");
+		String driverPath= file.getAbsolutePath();
+		System.out.println(driverPath);
 		
 		DesiredCapabilities cap=new DesiredCapabilities();
 		cap.setCapability("deviceName", "hhhhhh");
 		cap.setCapability("platformName", "Android");
 		cap.setCapability("browserName", "chrome");
-		cap.setCapability("chromedriverExecutable", "D:\\B-Mine\\Company\\Company\\SpansLab\\chromedriver.exe");
+		cap.setCapability("chromedriverExecutable", driverPath);
 		
 		AndroidDriver<WebElement> driver=new AndroidDriver<WebElement>(new URL("http://localhost:4723/wd/hub"), cap);
 		

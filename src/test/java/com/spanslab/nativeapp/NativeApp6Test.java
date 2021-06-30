@@ -17,30 +17,52 @@ import io.appium.java_client.android.AndroidDriver;
 public class NativeApp6Test {
 
 	public static void main(String[] args) throws MalformedURLException {
-		DesiredCapabilities cap=new DesiredCapabilities();
+		DesiredCapabilities cap = new DesiredCapabilities();
 		cap.setCapability("deviceName", "Redmi K20");
 		cap.setCapability("platformName", "Android");
 		cap.setCapability("app", "C:\\Components\\app\\Khan Academy_v6.3.0_apkpure.com.apk");
 		cap.setCapability("udid", "f43c4160");
-		
-		AndroidDriver<WebElement> driver=new AndroidDriver<WebElement>(new URL("http://localhost:4723/wd/hub"), cap);
+
+		AndroidDriver<WebElement> driver = new AndroidDriver<WebElement>(new URL("http://localhost:4723/wd/hub"), cap);
 		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
-		
-		driver.findElementByXPath("//*[@text='Dismiss']").click();
-		//*[@text='Arts and humanities']
-		//*[@text='Art of Asia']
-	
-		//Scroll and click 
+
+		// check and then click
+		if (driver.findElementsByXPath("//*[@text='Dismiss']").size() > 0) {
+			driver.findElementByXPath("//*[@text='Dismiss']").click();
+		}
+
+		// sometime click is working and sometime it is not working
+		while (driver.findElementsByXPath("//*[@content-desc='Profile tab']").size() == 0) {
+			driver.findElementByXPath("//*[@text='Dismiss']").click();
+		}
+
+		// sometime click is working and sometime it is not working --> ignore error in
+		// click
+		while (driver.findElementsByXPath("//*[@content-desc='Profile tab']").size() == 0) {
+			try {
+				driver.findElementByXPath("//*[@text='Dismiss']").click();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
+
+		// *[@text='Arts and humanities']
+		// *[@text='Art of Asia']
+
+		// Scroll and click
 		String visibleText = "Arts and humani";
-        driver.findElementByAndroidUIAutomator
-        ("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\"" + visibleText + "\").instance(0))").click();
+		driver.findElementByAndroidUIAutomator(
+				"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""
+						+ visibleText + "\").instance(0))")
+				.click();
 
-        //Scroll and click 
-        visibleText = "Asia";
-        driver.findElementByAndroidUIAutomator
-        ("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\"" + visibleText + "\").instance(0))").click();
+		// Scroll and click
+		visibleText = "Asia";
+		driver.findElementByAndroidUIAutomator(
+				"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""
+						+ visibleText + "\").instance(0))")
+				.click();
 
-		
 	}
 
 }
