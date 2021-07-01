@@ -12,6 +12,8 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import com.google.common.collect.ImmutableMap;
+
 import io.appium.java_client.android.AndroidDriver;
 
 public class AppiumCodeTest {
@@ -43,7 +45,7 @@ public class AppiumCodeTest {
 		{
 			driver.installApp(apkPath);
 		}
-		
+		System.out.println(driver.getSessionDetails());
 		System.out.println(driver.getAutomationName());
 		System.out.println(driver.getDeviceTime());
 		
@@ -51,9 +53,6 @@ public class AppiumCodeTest {
 		
 		System.out.println(driver.currentActivity());
 		System.out.println(driver.getCurrentPackage());
-		
-		
-		
 
 		driver.findElementByXPath("//*[@text='Dismiss']").click();
 		driver.findElementByXPath("//*[@content-desc='Profile tab']").click();
@@ -74,10 +73,13 @@ public class AppiumCodeTest {
 		byte[] decode=Base64.getDecoder().decode(encoded);
 		
 		
+		
 		FileOutputStream fout=new FileOutputStream(new File("recording/khanSignin.mp4"));
 		fout.write(decode);
 		fout.flush();
 		
+		driver.executeScript("mobile : shell", 
+				ImmutableMap.of("command", "adb shell am start -a android.bluetooth.adapter.action.REQUEST_ENABLE"));
 
 	}
 
